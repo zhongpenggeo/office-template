@@ -1,0 +1,51 @@
+%这是针对2017中国地质大学本科论文的LaTeX模板
+%编写者：pz
+%原因：学习并练习LaTeX中文排版
+
+%使用宏包
+%% 设置整体风格
+
+%纸张设置
+%A4纸，双面，正文12磅/pt，标题不单独成行，ctex中文宏包下report（有章节）
+\documentclass[a4paper,12pt,openany,UTF8]{ctexbook}
+\CJKfamily{song}
+\setlength{\baselineskip}{20pt}
+%\zihao{-4} %小四号字体
+
+%设置页眉页码
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[CO]{中国地质大学学士学位论文}
+\fancyhead[CE]{彭中：双聚束方法的数值模拟研究}
+\fancyhead[RO,LE]{\thepage}
+%设置版面，用geomatry宏包
+\usepackage{geometry}
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm,headheight=2.5cm,footskip=2cm}
+%设置章标题等格式,注意与前面song体定义方式不同，这里是命令，前面是参数
+\CTEXsetup[format={\heiti\centering\bfseries\zihao{3}}]{chapter}
+
+\begin{document}
+%一，设置目录等
+
+%二，正文开始
+\chapter{绪论}
+无论是在天然地震学还是勘探地震学中，把地下介质中传播的不同震相分离和提取出来都是一个困难但又值得研究的问题。如果地震波的传播距离足够远，由于不同震相的速度不同，则到达时间相距较远，在时间域内就可以把它们分离出来，但存在噪声干扰和能量衰减过大的问题；如果传播的距离有限，则不同的震相可能在相近的时间内到达，彼此形成干扰，而无法有效地分离。因此，诞生了阵列设计和阵列数据处理方法来解决这些问题。
+\chapter{DBF方法介绍}
+	\section{传统聚束方法}
+传统的聚束方法是单聚束方法（single beamforming），是针对单阵列（只存在接收阵列）的一种平面波分解方法（plane-wave decomposition），主要用来压制噪声，分离出具有相关性的信号。其原理是：假定地震波场以平面波入射到接收阵列，每一个震相都有自己特定的慢度和方位角，因此每一个地震震相到达阵列中不同位置或不同接收站的时间都存在差异，找到合适的慢度和方位角校正这个时间差，就可以通过信号叠加增强该震相信号，从而把震相分离出来。
+	\subsection{非线性叠加}
+通过Nth-root叠加可以很好地改善慢度分辨率，同时提高了信噪比和压制了振幅差异的影响，但地震信号经过根号运算和乘方运算之后会产生较大的变形，如图7a所示，Nth-root方法处理得到的时间函数在振幅接近0时会发生突变，变成折线，而不再是光滑的曲线，所以波形扭曲较大。相对Nth-root方法而言，phase-weight stack（PWS）方法尽管也是非线性叠加，但对波形的影响则非常小
+\chapter{DBF方法在数值模拟数据上的实验}
+数值模拟中，用声学-弹性界面（acoustic-elastic boundary）模拟空气-地球界面，在时间和空间上使用有限差分算子得到精度很高的体波和瑞雷面波数据
+
+
+%
+
+%标题设置
+
+%结束
+\end{document}
+
+
+

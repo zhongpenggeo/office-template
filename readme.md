@@ -7,7 +7,14 @@ this directory includes some template used in my office work.
 这里使用Word2013测试的，结果非常理想，基本不需要调整就可以符合毕设格式要求。
 ### PPT模板
 PPT模板是在zju写的，一个是通常用的模板，即zju\_log系列，一个是四页模板，后者是在一些较为重要的场合用的。
-
+### LaTeX模板
+2017cug_graduate.tex是2017地大本科生毕业论文的格式，与dotx文件是一样的，但是还有
+部分功能没有实现；只是为了纪念我曾经花在LaTeX上的功夫。  
+document.tex是一个beamer的模板，适用于大部分的的学术PPT。  
+可以实现的功能：  
+1. 自动生成目录，高亮当前目录，隐藏其他目录；
+2. 生成页码和logo
+3. 其他。
 ---
 持续更新中。
 第一次上传：2018-11-2
