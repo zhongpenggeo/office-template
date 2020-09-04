@@ -38,6 +38,7 @@
 
 \documentclass[compress]{beamer}
 
+
 %%%%%%%%%%%%%%%%%%%			加载包
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usetheme[height=0.8cm]{Rochester}%theme
@@ -45,18 +46,54 @@
 \usepackage[UTF8,noindent]{ctexcap} %noindent阻止段前缩进
 \usepackage{graphicx}%插入图片
 \usepackage{amsmath} % 插入公式
+\usepackage{subfigure} % 子图
 
 \mode<presentation>%为了实现分两栏
 
-%为每张PPT插入logo，
-% 左下角
-%\logo{\makebox[\paperwidth][l]{\includegraphics[width=1cm,keepaspectratio]{zjulogo.eps}}}
-%右下角
-\logo{\includegraphics[width=.8cm,keepaspectratio]{./imags/zjulogo.eps}}
+%%%%%%%%%%%%%%%%%%%%%%  section自动编号   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ht: 文字和顶部距离，
+% dp： 文字和底部距离
+% left： 文字对齐方向
+%\setbeamertemplate{headline}
+%{
+%  \leavevmode%
+%  \hbox{%
+%  \begin{beamercolorbox}[wd=1.0\paperwidth,ht=0.5cm,dp=2ex, right]{section in head/foot}%
+%    \usebeamerfont{section in head/foot}\thesection\ \insertsectionhead\hspace*{10cm}
+%  \end{beamercolorbox}%
+%  }%
+%  \vskip0pt%
+%}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%      setting
-%%%%%%%%%%%%%%%%%%%%%%
+%\definecolor{secinhead}{RGB}{249,196,95}
+%\definecolor{titlebg}{RGB}{51,51,51}
+%
+%\setbeamercolor{secsubsec}{fg=secinhead,bg=black}
+%\setbeamercolor{frametitle}{fg=secinhead,bg=titlebg}
+%\setbeamertemplate{headline}
+%{
+%  \leavevmode%
+%  \hbox{%
+%  \begin{beamercolorbox}[wd=\paperwidth,ht=8.25ex,dp=3.5ex]{secsubsec}%
+%    \raggedright
+%    \hspace*{2em}%
+%    {\sffamily\Large\color{secinhead}\thesection.~\insertsection\hfill\insertsubsection}%
+%    \hspace*{2em}%
+%  \end{beamercolorbox}%
+%  }%
+%}
+%\setbeamertemplate{frametitle}
+%{\vskip-3pt
+%  \leavevmode
+%  \hbox{%
+%  \begin{beamercolorbox}[wd=\paperwidth,ht=1.8ex,dp=1ex]{frametitle}%
+%    \raggedright\hspace*{2em}\small\insertframetitle
+%  \end{beamercolorbox}
+%  }%
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    setting color   %%%%%%%%%%%%%%%%%%%%%%
 
 %      change the color of theme   
 %\definecolor{SkyBlue} {HTML}{20948b}
@@ -64,6 +101,13 @@
 %\setbeamercolor{titlelike}{parent=structure,bg=cyan} % 	set title colot     
 %%%%%%%%%%%%%%%%%%   remove the page number     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	no pagenumber behind the page with this line, but before.
+
+%为每张PPT插入logo，
+% 左下角
+%\logo{\makebox[\paperwidth][l]{\includegraphics[width=1cm,keepaspectratio]{zjulogo.eps}}}
+%右下角
+\logo{\includegraphics[width=.8cm,keepaspectratio]{./imags/zjulogo.eps}}
+
 \setbeamertemplate{footline}{}
 \setbeamercolor{footcolor}{fg=black,bg=white} % 设置字体和背景颜色
 \setbeamertemplate{footline}[frame number] % 在底部导航区显示当前帧码。
@@ -72,12 +116,15 @@
 % \documentclass[aspectratio=1610]{beamer} % 长宽比设置为16：10，即16X10 cm
 % beamer默认页面大小：12.8*9.6cm（4:3）
 
-
 % 标题
 \title{long title}
 \subtitle{long subtitle}
 \author{彭中}
 \institute{ZJU}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%            文章开始           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
 % first frame; the title, [noframenumbering] means set the page number as 0.
@@ -90,13 +137,15 @@
 
 %contents based on the sections and subsections 	
 
-\tableofcontents%[sections={1-4}]
+\tableofcontents[hideallsubsections]%[sections={1-4}] % 隐藏小节目录
 %每一个小节前面都有目录，且高亮当前小节的目录。
 \end{frame}
-% 第一帧
-\section{公式-图片-表格}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%      正文       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{equatin-picture-table}
 \subsection{公式}
-\begin{frame}{\secname  . \subsecname}
+\begin{frame}{1. \secname: \subsecname}
 	\begin{gather}
 		u_t = -uu_x+\eta u_{xx}\\
 		u(0,x)=-sin(\pi x)\\
@@ -108,12 +157,14 @@
 		u(0,x) &=-sin(\pi x)\\
 		u(t,-1) & = u(t, 1)
 	\end{align}
+	
+	$$ y =a x$$
 
 
 \end{frame}
 
 \subsection{表格}
-\begin{frame}{\subsecname}
+\begin{frame}
 
 	\begin{table}
 		\caption{网络设置}	
@@ -147,15 +198,41 @@
 \begin{frame}
 	\begin{figure}[h]
 		%\centering	
-		\includegraphics[width=12cm]{./imags/flower.png}
-		\includegraphics[height=10cm]{./imags/flower.png}
-		\includegraphics[scale=0.5]{./imags/flower.png}
+		\includegraphics[width=2cm]{./imags/flower.png}
+		\includegraphics[height=2cm]{./imags/flower.png}
+		\includegraphics[scale=0.1]{./imags/flower.png}
 		\caption{获得N的结构}
 	\end{figure}
 \end{frame}
 
+\subsection{多幅图}
+\begin{frame}
+		\begin{figure}[htbp]
+		\centering
+		\subfigure[Fig. 1]{
+			\includegraphics[height=2.5cm]{./imags/flower.png}
+			%\caption{fig1}
+		}
+		\quad
+		\subfigure[Fig.2]{
+			\includegraphics[height=2.5cm]{./imags/flower.png}
+		}
+		\qquad
+	
+	
+		\subfigure[$\beta$]{
+			\includegraphics[height=2.5cm]{./imags/flower.png}
+		}
+		\quad
+		\subfigure[electric field]{
+			\includegraphics[height=2.5cm]{./imags/flower.png}
+		}
+		\caption{caption}
+		\end{figure}
+\end{frame}
+
 \section{强调}
-\begin{frame}{\secname}
+\begin{frame}
 	\begin{block}{多解性}
 		反演的速度场具有唯一性吗？
 	
@@ -182,7 +259,7 @@
 
 \section{页面布置}
 \subsection{分两栏}
-\begin{frame}{\secname}
+\begin{frame}
 	\begin{columns}
 		\begin{column}{0.6\linewidth}
 			\begin{itemize}
@@ -207,6 +284,8 @@
 	反演的速度场具有唯一性吗？
 	
 	\qquad
+	
+	~\\
 	
 	\qquad
 	
